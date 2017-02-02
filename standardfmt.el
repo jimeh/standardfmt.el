@@ -38,7 +38,8 @@
 
 (defgroup standardfmt nil
   "Minor mode for formatting JavaScript buffers with standard/semistandard."
-  :link '(url-link "https://github.com/jimeh/standardfmt.el"))
+  :link '(url-link "https://github.com/jimeh/standardfmt.el")
+  :group 'js)
 
 (defcustom standardfmt-command "standard"
   "Specify which formatter to use."
