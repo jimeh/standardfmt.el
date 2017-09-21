@@ -58,6 +58,25 @@
   :type 'string
   :group 'standardfmt)
 
+(defun standardfmt-lint ()
+  "Lint the current buffer with standard/semistandard."
+  (interactive)
+  (let ((msgbuf (get-buffer-create "*standardfmt-lint messages*"))
+        (coding-system-for-read 'utf-8)
+        (coding-system-for-write 'utf-8))
+
+    (save-restriction
+      (widen)
+      (with-current-buffer msgbuf (erase-buffer))
+
+      (message "Calling standard: %s -"
+               standardfmt-command)
+
+      (if (zerop (call-process-region (point-min) (point-max)
+                                      standardfmt-command nil msgbuf t "-"))
+          (message "Buffer conforms to semistandard")
+        (message "Buffer doesn't conform to semistandard")))))
+
 (defun standardfmt ()
   "Format the current buffer with standard/semistandard."
   (interactive)
