@@ -89,10 +89,10 @@
                                           tmpfile))
               (message "Buffer is already semistandard")
             (standardfmt--apply-rcs-patch patchbuf)
-            (message "Applied semistandard"))))
+            (message "Applied semistandard")))
 
-    (kill-buffer patchbuf)
-    (delete-file tmpfile)))
+        (kill-buffer patchbuf)
+        (delete-file tmpfile))))
 
 (defun standardfmt--apply-rcs-patch (patch-buffer)
   "Apply an RCS-formatted diff from PATCH-BUFFER to the current buffer."
